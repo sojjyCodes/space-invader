@@ -3,7 +3,7 @@ import random
 import os
 
 wn = turtle.Screen()
-wn.bgcolor("red")
+wn.bgcolor("black")
 wn.title("sojjy's Space invaders")
 
 #Draw border
@@ -28,7 +28,6 @@ player.penup()
 player.speed(0)
 player.setposition(0, -250)
 player.setheading(90)
-player.pendown()
 
 playerspeed = 20
 
@@ -55,12 +54,11 @@ turtle.onkey(move_right, "Right")
 
 #Create the enemies
 enemy_1 = turtle.Turtle()
-enemy_1.color("black")
+enemy_1.color("red")
 enemy_1.shape("triangle")
 enemy_1.penup()
 enemy_1.setposition(0, 280)
 enemy_1.setheading(270)
-enemy_1.pendown()
 
 enemyspeed = 2
 
@@ -78,5 +76,6 @@ while True:
     if enemy_1.xcor() < -280:
         enemyspeed *= -1
     
+
 
 delay = input("Click Enter To Exit: ")
