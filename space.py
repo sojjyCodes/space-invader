@@ -16,13 +16,17 @@ def move_right():
     player.setx(x)
 
 def fire_bullet():
-    global bulletstate
 
     x = player.xcor()
     y = player.ycor() + 10
     bullet.setposition(x, y)
     bullet.showturtle()
 
+
+#Set the scoreboard
+scoreboard = 0
+
+#Create the window
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.bgpic("space_invaders_background.gif")
@@ -67,10 +71,6 @@ bullet.hideturtle()
 
 bulletspeed = 20
 
-bulletstate = "ready" 
-
-
-
 #Create keyboard movement
 turtle.listen()
 turtle.onkey(move_left, "Left")
@@ -81,12 +81,23 @@ turtle.onkey(fire_bullet, "space")
 #Create the enemies
 enemy = turtle.Turtle()
 enemy.color("red")
+enemy.shape("circle")
 enemy.penup()
 enemy.setposition(0, 280)
 enemy.setheading(270)
 
+#Create the enemy bullet
+bullet2 = turtle.Turtle()
+bullet2.color("red")
+bullet2.shape("triangle")
+bullet2.speed(0)
+bullet2.penup()
+bullet2.setpos(0, +230)
+bullet2.setheading(270)
+bullet2.shapesize(0.5, 0.5)
+bullet2.hideturtle()
 enemyspeed = 2
-
+enemy_bullet_speed = 20
 
 while True:
     
@@ -100,11 +111,12 @@ while True:
     if enemy.xcor() < -280:
         enemyspeed *= -1
 
-    #Move the bullet
+    #Move the bullet and make it shoot
     y = bullet.ycor()
     y += bulletspeed
     bullet.sety(y)
 
+    if bullet.ycor() > 275:
+        bullet.hideturtle()
     
-
 delay = input("Click Enter To Exit: ")
