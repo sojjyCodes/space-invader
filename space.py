@@ -37,7 +37,7 @@ border_pen.hideturtle()
 
 #Create the player turtle
 player = turtle.Turtle()
-player.color("blue")
+player.color("white")
 player.shape("turtle")
 player.penup()
 player.speed(0)
