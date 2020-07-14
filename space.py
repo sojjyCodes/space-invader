@@ -46,6 +46,15 @@ def move_right():
         x = 280
     player.setx(x)
 
+#Making the player bullet
+bullet = turtle.Turtle()
+bullet.color("yellow")
+bullet.shape("circle")
+bullet.speed(0)
+bullet.penup()
+bullet.setheading(90)
+bullet.shapesize(0.5, 0.5)
+bullet.pendown()
 #Create keyboard movement
 turtle.listen()
 turtle.onkey(move_left, "Left")
@@ -62,7 +71,6 @@ enemy_1.setheading(270)
 
 enemyspeed = 2
 
-#Creating the second enemy
 
 while True:
     
@@ -76,6 +84,5 @@ while True:
     if enemy_1.xcor() < -280:
         enemyspeed *= -1
     
-
 
 delay = input("Click Enter To Exit: ")
