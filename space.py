@@ -15,6 +15,13 @@ def move_right():
         x = 280
     player.setx(x)
 
+def fire_bullet():
+    global bulletstate
+
+    x = player.xcor()
+    y = player.ycor() + 10
+    bullet.setposition(x, y)
+    bullet.showturtle()
 
 wn = turtle.Screen()
 wn.bgcolor("black")
@@ -56,12 +63,19 @@ bullet.penup()
 bullet.setpos(0, -230)
 bullet.setheading(90)
 bullet.shapesize(0.5, 0.5)
-bullet.pendown()
+bullet.hideturtle()
+
+bulletspeed = 20
+
+bulletstate = "ready" 
+
+
 
 #Create keyboard movement
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
+turtle.onkey(fire_bullet, "space")
 
 
 #Create the enemies
@@ -85,6 +99,12 @@ while True:
 
     if enemy.xcor() < -280:
         enemyspeed *= -1
+
+    #Move the bullet
+    y = bullet.ycor()
+    y += bulletspeed
+    bullet.sety(y)
+
     
 
 delay = input("Click Enter To Exit: ")
