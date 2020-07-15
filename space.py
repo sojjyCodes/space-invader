@@ -16,11 +16,13 @@ def move_right():
     player.setx(x)
 
 def fire_bullet():
-
-    x = player.xcor()
-    y = player.ycor() + 10
-    bullet.setposition(x, y)
-    bullet.showturtle()
+    global bulletstate
+    if bulletstate == "ready":
+        bulletstate = "fire"
+        x = player.xcor()
+        y = player.ycor() + 10
+        bullet.setposition(x, y)
+        bullet.showturtle()
 
 
 #Set the scoreboard
@@ -71,6 +73,8 @@ bullet.hideturtle()
 
 bulletspeed = 20
 
+bulletstate = "ready"
+
 #Create keyboard movement
 turtle.listen()
 turtle.onkey(move_left, "Left")
@@ -112,11 +116,13 @@ while True:
         enemyspeed *= -1
 
     #Move the bullet and make it shoot
-    y = bullet.ycor()
-    y += bulletspeed
-    bullet.sety(y)
+    if bulletstate == "fire":
+        y = bullet.ycor()
+        y += bulletspeed
+        bullet.sety(y)
 
     if bullet.ycor() > 275:
         bullet.hideturtle()
+        bulletstate = "ready"
     
 delay = input("Click Enter To Exit: ")
