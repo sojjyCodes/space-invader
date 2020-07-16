@@ -1,4 +1,5 @@
 import turtle
+import math
 
 #Make a function to move the player 
 def move_left():
@@ -24,6 +25,13 @@ def fire_bullet():
         bullet.setposition(x, y)
         bullet.showturtle()
 
+def isCollision(t1, t2):
+    distance = math.sqrt(math.pow(t1.xcor()- t2.xcor(), 2)+math.pow(t1.ycor()-t2.ycor(), 2))
+
+    if distance < 15:
+        return True
+    else:
+        return False
 
 #Set the scoreboard
 scoreboard = 0
@@ -33,7 +41,7 @@ wn = turtle.Screen()
 wn.bgcolor("black")
 wn.bgpic("space_invaders_background.gif")
 wn.title("Space Invaders")
-wn.register_shape('player1.gif')
+wn.register_shape('player.gif')
 wn.register_shape('invader.gif')
 
 #Draw border
@@ -52,7 +60,7 @@ border_pen.hideturtle()
 
 #Create the player turtle
 player = turtle.Turtle()
-player.shape('player1.gif')
+player.shape('player.gif')
 player.penup()
 player.speed(0)
 player.setposition(0, -250)
@@ -126,6 +134,10 @@ while True:
         bullet.hideturtle()
         bulletstate = "ready"
 
-    if bullet == enemy:
-        print("You won")
+    if isCollision(bullet, enemy):
+        bullet.hideturtle()
+        bulletstate = "ready"
+        bullet.setposition(0, -400)
+
+        enemy.setposition(-200, 250)
 delay = input("Click Enter To Exit: ")
