@@ -33,6 +33,7 @@ wn = turtle.Screen()
 wn.bgcolor("black")
 wn.bgpic("space_invaders_background.gif")
 wn.title("Space Invaders")
+wn.register_shape('invader.gif')
 
 #Draw border
 border_pen = turtle.Turtle() 
@@ -50,8 +51,6 @@ border_pen.hideturtle()
 
 #Create the player turtle
 player = turtle.Turtle()
-player.color("white")
-player.shape("turtle")
 player.penup()
 player.speed(0)
 player.setposition(0, -250)
@@ -84,22 +83,22 @@ turtle.onkey(fire_bullet, "space")
 
 #Create the enemies
 enemy = turtle.Turtle()
-enemy.color("red")
-enemy.shape("circle")
+enemy.shape("invader.gif")
 enemy.penup()
 enemy.setposition(0, 280)
 enemy.setheading(270)
 
+
 #Create the enemy bullet
-bullet2 = turtle.Turtle()
-bullet2.color("red")
-bullet2.shape("triangle")
-bullet2.speed(0)
-bullet2.penup()
-bullet2.setpos(0, +230)
-bullet2.setheading(270)
-bullet2.shapesize(0.5, 0.5)
-bullet2.hideturtle()
+#bullet2 = turtle.Turtle()
+#bullet2.color("red")
+#bullet2.shape("triangle")
+#bullet2.speed(0)
+#bullet2.penup()  #Working on them later
+#bullet2.setpos(0, +230)
+#bullet2.setheading(270)
+#bullet2.shapesize(0.5, 0.5)
+#bullet2.hideturtle()
 enemyspeed = 2
 enemy_bullet_speed = 20
 
@@ -124,5 +123,5 @@ while True:
     if bullet.ycor() > 275:
         bullet.hideturtle()
         bulletstate = "ready"
-    
+
 delay = input("Click Enter To Exit: ")
