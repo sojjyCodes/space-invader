@@ -126,4 +126,6 @@ while True:
         bullet.hideturtle()
         bulletstate = "ready"
 
+    if bullet == enemy:
+        print("You won")
 delay = input("Click Enter To Exit: ")
