@@ -33,6 +33,7 @@ wn = turtle.Screen()
 wn.bgcolor("black")
 wn.bgpic("space_invaders_background.gif")
 wn.title("Space Invaders")
+wn.register_shape('player1.gif')
 wn.register_shape('invader.gif')
 
 #Draw border
@@ -51,6 +52,7 @@ border_pen.hideturtle()
 
 #Create the player turtle
 player = turtle.Turtle()
+player.shape('player1.gif')
 player.penup()
 player.speed(0)
 player.setposition(0, -250)
