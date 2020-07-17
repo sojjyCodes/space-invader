@@ -32,9 +32,9 @@ def isCollision(t1, t2):
         return True
     else:
         return False
-
+        
 #Set the scoreboard
-scoreboard = 0
+score = 0
 
 #Create the window
 wn = turtle.Screen()
@@ -43,6 +43,15 @@ wn.bgpic("space_invaders_background.gif")
 wn.title("sojjyCodes")
 wn.register_shape('player.gif')
 wn.register_shape('invader.gif')
+
+score_pen = turtle.Turtle()
+score_pen.speed(0)
+score_pen.color("white")
+score_pen.up()
+score_pen.goto(-290, 250)
+score_string = "Score: {}".format(score)
+score_pen.write(score_string, False, align="left", font=("Arial", 14, "normal"))
+score_pen.hideturtle()
 
 #Draw border
 border_pen = turtle.Turtle() 
@@ -138,6 +147,11 @@ while True:
         bullet.hideturtle()
         bulletstate = "ready"
         bullet.setposition(0, -400)
+
+        score += 10
+        score_string = "Score: {}".format(score)
+        score_pen.write(score_string, False, align="right", font=("Arial", 14, "normal"))
+        score_pen.hideturtle()
 
         #Reset enemies position
         enemy.setposition(-200, 250)
