@@ -40,7 +40,7 @@ scoreboard = 0
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.bgpic("space_invaders_background.gif")
-wn.title("Space Invaders")
+wn.title("sojjyCodes")
 wn.register_shape('player.gif')
 wn.register_shape('invader.gif')
 
@@ -139,5 +139,6 @@ while True:
         bulletstate = "ready"
         bullet.setposition(0, -400)
 
+        #Reset enemies position
         enemy.setposition(-200, 250)
 delay = input("Click Enter To Exit: ")
