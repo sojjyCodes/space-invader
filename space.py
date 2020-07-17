@@ -136,6 +136,7 @@ while True:
 
     #Move the bullet and make it shoot
     if bulletstate == "fire":
+        #playsound('laser.wav')
         y = bullet.ycor()
         y += bulletspeed
         bullet.sety(y)
@@ -145,7 +146,7 @@ while True:
         bulletstate = "ready"
 
     if isCollision(bullet, enemy):
-        playsound('laser.wav')
+        playsound('explosion.wav')
         bullet.hideturtle()
         bulletstate = "ready"
         bullet.setposition(0, -400)
@@ -160,6 +161,20 @@ while True:
         score_pen.write(score_string, False, align="left", font=("Arial", 14, "normal"))
         score_pen.hideturtle()
 
-        #Reset enemies position
+        #Reset enemy position
         enemy.setposition(-200, 250)
-delay = input("Click Enter To Exit: ")
+
+    #Adding the message when you win
+    if score == 50:
+        score_pen.clear()
+        score_pen.up()
+        score_pen.goto(-290, 250)
+        score_string = "You Win with {}".format(score,"point")
+        score_pen.write(score_string, False, align="center", font=("Arial", 20))
+        score_pen.hideturtle()
+        #Exit the game
+        exit()
+
+
+
+
