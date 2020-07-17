@@ -165,7 +165,7 @@ while True:
         enemy.setposition(-200, 250)
 
     #Adding the message when you win
-    if score == 10:
+    if score == 100:
         score_pen.clear()
         score_pen.up()
         score_pen.goto(-290, 250)
@@ -174,7 +174,3 @@ while True:
         score_pen.hideturtle()
         #Exit the game
         exit()
-
-
-
-
