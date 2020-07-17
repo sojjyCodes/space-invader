@@ -1,5 +1,6 @@
 import turtle
 import math
+from playsound import playsound
 
 #Make a function to move the player 
 def move_left():
@@ -98,7 +99,7 @@ turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
 turtle.onkey(fire_bullet, "space")
-
+ 
 
 #Create the enemies
 enemy = turtle.Turtle()
@@ -144,9 +145,12 @@ while True:
         bulletstate = "ready"
 
     if isCollision(bullet, enemy):
+        playsound('laser.wav')
         bullet.hideturtle()
         bulletstate = "ready"
         bullet.setposition(0, -400)
+        
+
 
         score += 10
         score_pen.clear()
