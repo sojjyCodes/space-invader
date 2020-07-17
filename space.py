@@ -165,7 +165,7 @@ while True:
         enemy.setposition(-200, 250)
 
     #Adding the message when you win
-    if score == 50:
+    if score == 10:
         score_pen.clear()
         score_pen.up()
         score_pen.goto(-290, 250)
