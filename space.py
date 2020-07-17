@@ -149,8 +149,11 @@ while True:
         bullet.setposition(0, -400)
 
         score += 10
+        score_pen.clear()
+        score_pen.up()
+        score_pen.goto(-290, 250)
         score_string = "Score: {}".format(score)
-        score_pen.write(score_string, False, align="right", font=("Arial", 14, "normal"))
+        score_pen.write(score_string, False, align="left", font=("Arial", 14, "normal"))
         score_pen.hideturtle()
 
         #Reset enemies position
