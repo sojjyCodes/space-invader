@@ -146,7 +146,7 @@ while True:
         bulletstate = "ready"
 
     if isCollision(bullet, enemy):
-        playsound('explosion.wav')
+        #playsound('explosion.wav')
         bullet.hideturtle()
         bulletstate = "ready"
         bullet.setposition(0, -400)
