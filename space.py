@@ -129,11 +129,14 @@ while True:
     enemy.setx(x)
 
     if enemy.xcor() > 280:
+        #Adding a command to make the enemy go down whenever it hits the right border
+        y = enemy.ycor()
+        y -= 40
         enemyspeed *= -1
+        enemy.sety(y)
 
     if enemy.xcor() < -280:
         enemyspeed *= -1
-
     #Move the bullet and make it shoot
     if bulletstate == "fire":
         #playsound('laser.wav')
