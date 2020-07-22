@@ -1,5 +1,6 @@
 import turtle
 import math
+import random
 from playsound import playsound
 
 #Make a function to move the player 
@@ -94,19 +95,30 @@ bulletspeed = 20
 
 bulletstate = "ready"
 
+enemy_bullet_speed = 20
+#Add a certain number of enemies
+number_of_enemies = 5
+enemies = []
+
+for i in range(number_of_enemies):
+    #Create the enemies
+    enemies.append(turtle.Turtle())
+
+for enemy in enemies:
+    enemy.shape("invader.gif")
+    enemy.penup()
+    enemy.speed(0)
+    enemy.setposition(0, 280)
+    enemy.setheading(270)
+    x = random.randint(-200, 200)
+    y = random.randint(100, 250)
+
 #Create keyboard movement
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
 turtle.onkey(fire_bullet, "space")
  
-
-#Create the enemies
-enemy = turtle.Turtle()
-enemy.shape("invader.gif")
-enemy.penup()
-enemy.setposition(0, 280)
-enemy.setheading(270)
 
 
 #Create the enemy bullet
@@ -120,23 +132,24 @@ enemy.setheading(270)
 #bullet2.shapesize(0.5, 0.5)
 #bullet2.hideturtle()
 enemyspeed = 2
-enemy_bullet_speed = 20
 
 while True:
+    for enemy in enemies:
     
-    x = enemy.xcor()
-    x += enemyspeed
-    enemy.setx(x)
+        x = enemy.xcor()
+        x += enemyspeed
+        enemy.setx(x)
 
-    if enemy.xcor() > 280:
-        #Adding a command to make the enemy go down whenever it hits the right border
-        y = enemy.ycor()
-        y -= 40
-        enemyspeed *= -1
-        enemy.sety(y)
+        if enemy.xcor() > 280:
+            #Adding a command to make the enemy go down whenever it hits the right border
+            y = enemy.ycor()
+            y -= 40
+            enemyspeed *= -1
+            enemy.sety(y)
 
-    if enemy.xcor() < -280:
-        enemyspeed *= -1
+        if enemy.xcor() < -280:
+            enemyspeed *= -1
+            
     #Move the bullet and make it shoot
     if bulletstate == "fire":
         #playsound('laser.wav')
